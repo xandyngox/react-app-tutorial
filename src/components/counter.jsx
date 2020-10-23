@@ -1,9 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Counter extends Component {
-    render() { 
-        return <h1>Hello World</h1>;
-    }
+  state = {
+    count: 0,
+    tags: [],
+  };
+
+  renderTags() {
+    if (this.state.tags.length === 0) return "There are no tags!";
+    return (
+      <ul>
+        {this.state.tags.map((tag) => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.tags.length === 0 && "Please create a new tag! "}
+        {this.renderTags()}
+      </div>
+    );
+  }
 }
- 
+
 export default Counter;
